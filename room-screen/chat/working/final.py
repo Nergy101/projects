@@ -42,7 +42,7 @@ def receive():
         userid = data[2:6]
         if userid == ownuserid:
             logon = 3
-        print(data)
+
         if logon == 3 and data[6:-1] == 'EXIT':
             print("You have left the chat.")
             break
