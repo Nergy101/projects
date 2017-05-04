@@ -1,25 +1,7 @@
+##add option to add devices to file devices.txt##
+
 import os
 from time import sleep
-def devconnected():
-    print('updating devices..')
-    os.system('nmap -sn 192.168.178.1/24 > connected.txt')
-    sleep(3)
-    infile = open('connected.txt')
-    convert = infile.readlines()
-    infile.close()
-    i = 4
-    global connected
-    connected = []
-    while i < (len(convert) - 1):
-        thing = convert[i]
-
-        if thing[-17] == '(':
-            connected.append(thing[-16:-2])
-        else:
-            connected.append(thing[-15:-1])
-        i += 2
-    return connected
-
 
 def homefunc():
     global dictionary, adresses
@@ -31,30 +13,54 @@ def homefunc():
     infile.close()
     i = 0
     while i < len(text):
-        global name
-        name = text[i][2:-20]
 
-        adress = text[i][-17:-3]
-        adresses.append(adress)
-        dictionary.update({adress:name})
-        adress = "'" + adress + "'"
+
+        addrstart = 2
+        endsearch = '":'
+        addrend = str(text[i]).find(endsearch)
+        begin2search = ':"'
+        namestart = str(text[i]).find(begin2search) + 2
+        dictionary.update({text[i][addrstart:addrend]:text[i][namestart:-3]})
+        ip = text[i][addrstart:addrend]
+        adresses.append(ip)
         i += 1
 
     return dictionary
 
 
+def devconnected():
+    print('updating devices..')
+    os.system('sudo nmap -sn 192.168.178.1/24 > connected.txt')
+    sleep(2)
+    infile = open('connected.txt')
+    convert = infile.readlines()
+    infile.close()
+    i = 2
+    connected = []
+    while i < len(convert):
+        thing = convert[i]
+
+        search = thing.find('192.168') #finds the position of common part of ip address range.
+        if thing[-2]==')': # gets rid of the ')' nmap puts at the end of the ip address if the device has a name
+            connected.append(thing[search:-2])
+        else:
+            connected.append(thing[search:-1])
+        i += 3
+    return connected
+
+
 def alert():
-    test = set(connected).intersection(adresses)
+    test = set(devconnected()).intersection(adresses)
 
     i = 0
     print('These are here: ')
     while i < len(test):
 
-        print(homefunc()[list(test)[i]])
+        print(dictionary[adresses[i]])
         i += 1
 
 
 homefunc()
-devconnected()
+
 alert()
 
