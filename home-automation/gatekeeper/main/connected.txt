@@ -1,17 +1,17 @@
 
-Starting Nmap 6.47 ( http://nmap.org ) at 2017-05-04 18:58 CEST
-Nmap scan report for fritz.box (192.168.178.1)
-Host is up (0.018s latency).
+Starting Nmap 6.47 ( http://nmap.org ) at 2017-05-05 17:35 CEST
+Nmap scan report for 192.168.178.1
+Host is up (0.043s latency).
 MAC Address: C8:0E:14:ED:D6:AD (Unknown)
 Nmap scan report for 192.168.178.20
-Host is up (0.011s latency).
+Host is up (-0.11s latency).
 MAC Address: 00:02:9B:78:5F:B7 (Kreatel Communications AB)
-Nmap scan report for sybbook.fritz.box (192.168.178.23)
-Host is up (-0.089s latency).
-MAC Address: 60:02:B4:65:98:15 (Wistron NeWeb)
-Nmap scan report for GREYHAWK.fritz.box (192.168.178.31)
-Host is up (-0.074s latency).
+Nmap scan report for 192.168.178.31
+Host is up (0.016s latency).
 MAC Address: AC:9E:17:83:6B:6B (Unknown)
-Nmap scan report for GREYTITAN.fritz.box (192.168.178.30)
+Nmap scan report for 192.168.178.43
+Host is up (0.046s latency).
+MAC Address: F8:CF:C5:C2:BB:1D (Unknown)
+Nmap scan report for GREYTITAN (192.168.178.30)
 Host is up.
-Nmap done: 256 IP addresses (5 hosts up) scanned in 5.77 seconds
+Nmap done: 256 IP addresses (5 hosts up) scanned in 2.81 seconds
