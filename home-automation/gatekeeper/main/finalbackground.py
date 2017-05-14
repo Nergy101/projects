@@ -53,27 +53,25 @@ def devconnected():
 
 
 def alert():
+    #firstprep
+    i = 0
+    newdev = []
+    test = set(devconnected()).intersection(adresses)
+    while i < len(test):
+        newdev.append(dictionary[adresses[i]])
+
+        i += 1
+
+    if not os.path.exists('oldlist.txt'): #creates the oldlist.txt file
+        outfile = open('oldlist.txt', 'w')
+        outfile.write(str(newdev))
+        outfile.close()
+    if not os.path.exists('newlist.txt'): #creates the newlist.txt file
+        outfile = open('newlist.txt', 'w')
+        outfile.write(str(newdev))
+        outfile.close()
     while True:
         homefunc()
-        test = set(devconnected()).intersection(adresses)
-
-        #firstprep
-        i = 0
-        newdev = []
-        while i < len(test):
-            newdev.append(dictionary[adresses[i]])
-
-            i += 1
-
-        if not os.path.exists('oldlist.txt'): #creates the oldlist.txt file
-            outfile = open('oldlist.txt', 'w')
-            outfile.write(str(newdev))
-            outfile.close()
-        if not os.path.exists('newlist.txt'): #creates the newlist.txt file
-            outfile = open('newlist.txt', 'w')
-            outfile.write(str(newdev))
-            outfile.close()
-
 
         #print('These are here: ')
         #creation of oldlist
