@@ -31,7 +31,7 @@ def homefunc():
 
 def devconnected():
     print('updating devices..')
-    #os.system('sudo nmap -sn 192.168.178.1/24 > connected.txt')
+    os.system('sudo nmap -sn 192.168.178.1/24 > connected.txt')
     #sleep(2)
     infile = open('connected.txt')
     convert = infile.readlines()
@@ -73,7 +73,15 @@ def alert():
         outfile.close()
     print('initiating stand-by mode')
     while True:
+
         print("i'm here now")
+        i = 0
+        newdev = []
+        test = set(devconnected()).intersection(adresses)
+        while i < len(test):
+            newdev.append(dictionary[adresses[i]])
+
+            i += 1
         homefunc()
         infile = open('newlist.txt', 'w')
         infile.write(str(newdev))
