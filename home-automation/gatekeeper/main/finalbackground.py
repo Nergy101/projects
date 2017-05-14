@@ -31,7 +31,7 @@ def homefunc():
 
 def devconnected():
     print('updating devices..')
-    os.system('sudo nmap -sn 192.168.178.1/24 > connected.txt')
+    #os.system('sudo nmap -sn 192.168.178.1/24 > connected.txt')
     #sleep(2)
     infile = open('connected.txt')
     convert = infile.readlines()
@@ -54,6 +54,7 @@ def devconnected():
 
 def alert():
     #firstprep
+    homefunc()
     i = 0
     newdev = []
     test = set(devconnected()).intersection(adresses)
@@ -70,7 +71,9 @@ def alert():
         outfile = open('newlist.txt', 'w')
         outfile.write(str(newdev))
         outfile.close()
+    print('initiating stand-by mode')
     while True:
+        print("i'm here now")
         homefunc()
 
         #print('These are here: ')
@@ -113,7 +116,7 @@ def alert():
                 infile = open('oldlist.txt', 'a')
                 infile.write(", " + str(difference)[1:-1] + ']')
                 infile.close()
-
+        print("apperntly nothing changed")
 
         sleep(3)
 alert()
