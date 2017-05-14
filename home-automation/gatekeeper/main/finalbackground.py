@@ -4,7 +4,7 @@ import os
 from time import sleep
 
 def homefunc():
-    print('creating dictionaries')
+
     global dictionary, adresses
     dictionary = {}
 
@@ -30,9 +30,9 @@ def homefunc():
 
 
 def devconnected():
-    print('updating devices..')
+
     os.system('sudo nmap -sn 192.168.178.1/24 > connected.txt')
-    #sleep(2)
+
     infile = open('connected.txt')
     convert = infile.readlines()
     infile.close()
@@ -74,7 +74,7 @@ def alert():
     print('initiating stand-by mode')
     while True:
 
-        print("i'm here now")
+
         i = 0
         newdev = []
         test = set(devconnected()).intersection(adresses)
@@ -127,7 +127,7 @@ def alert():
                 #infile = open('oldlist.txt', 'a')
                 #infile.write(", " + str(difference)[1:-1] + ']')
                 #infile.close()
-        print("apperntly nothing changed")
+
 
         sleep(3)
 alert()
