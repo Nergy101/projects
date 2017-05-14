@@ -31,7 +31,7 @@ def homefunc():
 
 def devconnected():
     print('updating devices..')
-    #os.system('sudo nmap -sn 192.168.178.1/24 > connected.txt')
+    os.system('sudo nmap -sn 192.168.178.1/24 > connected.txt')
     #sleep(2)
     infile = open('connected.txt')
     convert = infile.readlines()
@@ -56,13 +56,25 @@ def alert():
     while True:
         homefunc()
         test = set(devconnected()).intersection(adresses)
+
+        #firstprep
+        i = 0
+        newdev = []
+        while i < len(test):
+            newdev.append(dictionary[adresses[i]])
+
+            i += 1
+
         if not os.path.exists('oldlist.txt'): #creates the oldlist.txt file
             outfile = open('oldlist.txt', 'w')
+            outfile.write(str(newdev))
             outfile.close()
-        if not os.path.exists('newlist.txt'): #creates the oldlist.txt file
+        if not os.path.exists('newlist.txt'): #creates the newlist.txt file
             outfile = open('newlist.txt', 'w')
+            outfile.write(str(newdev))
             outfile.close()
-        i = 0
+
+
         #print('These are here: ')
         #creation of oldlist
         infile = open('oldlist.txt')
@@ -72,7 +84,7 @@ def alert():
         newoldlist = eval(oldlist)
         #list for when a device is removed
         remlist = newoldlist[:-1]
-        print(remlist)
+
         oldlist = newoldlist
 
         #creation of newlist
@@ -81,14 +93,6 @@ def alert():
         newnewlist = eval(newlist)
         newlist = newnewlist
 
-        i = 0
-        while i < len(test):
-            #newlist.append(dictionary[adresses[i]])
-            #print(newlist)
-            #print(dictionary[adresses[i]])
-
-
-            i += 1
 
         difference = set(oldlist) ^ set(newlist)
         #if old is bigger than new, something left and vice versa
