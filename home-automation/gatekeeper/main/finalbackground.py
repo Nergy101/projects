@@ -75,7 +75,9 @@ def alert():
     while True:
         print("i'm here now")
         homefunc()
-
+        infile = open('newlist.txt', 'w')
+        infile.write(str(newdev))
+        infile.close()
         #print('These are here: ')
         #creation of oldlist
         infile = open('oldlist.txt')
@@ -109,13 +111,14 @@ def alert():
                 print(difference, " has entered.")
                 #delete last character to open file for new device
                 infile = open('oldlist.txt', 'w')
-                infile.write(openoldlist)
+                oldlist.extend(difference)
+                infile.write(str(oldlist))
                 infile.close()
 
 
-                infile = open('oldlist.txt', 'a')
-                infile.write(", " + str(difference)[1:-1] + ']')
-                infile.close()
+                #infile = open('oldlist.txt', 'a')
+                #infile.write(", " + str(difference)[1:-1] + ']')
+                #infile.close()
         print("apperntly nothing changed")
 
         sleep(3)
