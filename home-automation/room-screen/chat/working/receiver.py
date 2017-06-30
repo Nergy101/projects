@@ -3,7 +3,7 @@
 import os
 from socket import *
 host = ""
-port = 13001
+port = 13000
 buf = 1024
 addr = (host, port)
 UDPSock = socket(AF_INET, SOCK_DGRAM)
