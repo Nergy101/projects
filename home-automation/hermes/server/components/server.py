@@ -17,7 +17,7 @@ class probe:
     def start(self, devices):
         i  = 0
 
-        if i < devices:
+        if i < eval(devices):
             def sendprobe():
                 dest = ('<broadcast>')
                 port = 13000
@@ -60,12 +60,12 @@ class probe:
             print('recieved the deets')
             data = str(data)
             addr = str(addr)
-            print(data)
+            #print(data)
             if data[-5:-1] == '0001':            #CODE           #0001 == DISCack
                 clientname = data[2:data.find(':')]
-                print(clientname)
+                #print(clientname)
                 ip = addr[2:addr.find(',')-1]
-                print(ip)
+                #print(ip)
                 print('setting up connection with ' + data[2:data.find(':')])
                 dictionary.update({data[2:data.find(':')]: addr[2:addr.find(',')-1]}                                                                                                                                                             )
                 infile = open('dictionary.txt', 'w')
@@ -78,7 +78,7 @@ class probe:
                 sending(addr, code)
                 if sending(addr, code) == True:
                     i = i + 1
-                    print(i)
+                    #print(i)
                 print('done.')
                 #print(dictionary)
                 UDPSock.close()

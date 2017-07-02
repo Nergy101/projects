@@ -27,7 +27,7 @@ class probing:
             addr = (dest, port)
             BSock = socket(AF_INET, SOCK_DGRAM)
             BSock.setsockopt(SOL_SOCKET,SO_BROADCAST, 1)
-
+            sleep(1)       #NECESSARY
             BSock.sendto(bytes(msg, "utf-8"), addr)
             #print('sending reply')
             sleep(2)
@@ -76,10 +76,4 @@ class probing:
                 print('preliminary connection established, setting up secure connection to', ip)
                 break
         return ip
-
-
-
-
-
-
 
