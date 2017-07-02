@@ -1,10 +1,10 @@
 from socket import *
 
-host = '192.168.178.31'#, "192.168.178.30" # set to IP address of target computer
+host = '192.168.178.30'#, "192.168.178.30" # set to IP address of target computer
 port = 13333
 addr = (host, port)
 UDPSock = socket(AF_INET, SOCK_STREAM)
-name = 'server1'
+name = 'hawk'
 UDPSock.connect(addr)
 print('connected to ' + host)
 msg = 'this is ' + name
