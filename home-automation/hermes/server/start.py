@@ -1,14 +1,17 @@
 from components.server import probe
 from components.tcpserver import receive
+import os
+
+if not os.path.exists('dictionary.txt'):
+    menu = str(2)
+else:
+    menu  = input('what do you want to do? ')
 
 
-menu  = input('what do you want to do? ')
 if menu == '1':
-    receive().receive()
+    msg = 'received'
+    receive().receive(msg)
 
 if menu == '2' or menu == 'probe':
-    devices = input('how many nodes are there?')
-    if eval(devices) > 0:
-        probe().start(devices)
-    else:
-        print('sorry, that would break the system. ')
+    devices = '1'             #changing this because the system can't handle more than 1 node at a time anyway
+    probe().start(devices)

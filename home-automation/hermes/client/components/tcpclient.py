@@ -13,5 +13,7 @@ class sending:
         UDPSock.connect(addr)
         print('securely connected to ' + host)
         UDPSock.send(bytes(msg, "utf-8"))
-        print('message sent.')
-       
+        print('receiving')
+        data = UDPSock.recv(1024)
+        data = str(data)
+        print(data[2:-1])

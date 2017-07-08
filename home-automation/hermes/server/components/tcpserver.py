@@ -20,6 +20,7 @@ class receive:
             print('connection accepted from ' + repr(addr[0]))
             print(data[2:-1])
             # POSSIBLE message
+            print('sending message')
             c.send(bytes(msg, "utf-8"))
 
 
