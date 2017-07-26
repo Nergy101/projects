@@ -19,7 +19,7 @@ class receive():
             print(data[2:-1])
             info = repr(addr[0]) + 'says: ' + data[2:-1]
             infile = open('messages.txt', 'a')
-            infile.write(data[2:-1] + "<return>")
+            infile.write(info + "<return>")
             infile.close
             # POSSIBLE message
             #print('sending message')
