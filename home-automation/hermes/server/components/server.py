@@ -17,7 +17,7 @@ class probe:
     def start(self, devices):
         i  = 0
 
-        if i < eval(devices):
+        while i < eval(devices) + 1:
             def sendprobe():
                 dest = ('<broadcast>')
                 port = 13000
@@ -26,7 +26,7 @@ class probe:
                 BSock.setsockopt(SOL_SOCKET,SO_BROADCAST, 1)
                 probe = base + '1000'
                 BSock.sendto(bytes(probe, "utf-8"), addr)
-                #print('PROBE SENT.')
+                print('PROBE SENT.')
                 sleep(0.5)
                 BSock.close()
             def sending(addr, code):
@@ -67,7 +67,7 @@ class probe:
                 ip = addr[2:addr.find(',')-1]
                 #print(ip)
                 print('setting up connection with ' + data[2:data.find(':')])
-                dictionary.update({data[2:data.find(':')]: addr[2:addr.find(',')-1]}                                                                                                                                                             )
+                dictionary.update({addr[2:addr.find(',')-1]: data[2:data.find(':')]}                                                                                                                                                             )
                 infile = open('dictionary.txt', 'w')
                 infile.write(str(dictionary))
                 infile.close()
