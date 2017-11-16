@@ -1,0 +1,14 @@
+from socket import *
+
+addr = "192.168.178.34"
+print('sending code')
+
+msg = 'hey'
+port = 8989
+addr = (addr, port)
+BSock = socket(AF_INET, SOCK_DGRAM)
+BSock.setsockopt(SOL_SOCKET,SO_BROADCAST, 1)
+#send status to client.
+BSock.sendto(bytes(msg, "utf-8"), (addr))
+#print('sent', code, 'to', ip)
+BSock.close()
