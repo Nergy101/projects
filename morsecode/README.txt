@@ -16,3 +16,12 @@ boom on demand wifihotspot
 
 
 
+IDEAS
+multiple options:
+abikity to choose between vibrations, notifocation light and flash to receive
+ability to use keyboard or volume options to send
+send using vokume buttons(up=long, down=short)
+
+
+TODO
+translate sound to morse and vice versa
