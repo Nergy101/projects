@@ -21,7 +21,8 @@ multiple options:
 abikity to choose between vibrations, notifocation light and flash to receive
 ability to use keyboard or volume options to send
 send using vokume buttons(up=long, down=short)
-
+translate sound to morse and vice versa
 
 TODO
-translate sound to morse and vice versa
+Make gui
+implement proper database
